@@ -17,6 +17,7 @@ var ClientMongo *mongo.Database
 func ConectarBD() {
 	if ClientMongo == nil {
 		uri, database := getUri()
+		/*log.Fatal(uri)*/
 		client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 		if err != nil {
 			log.Fatal(err.Error())
@@ -35,7 +36,8 @@ func ConectarBD() {
 func getUri() (string, string) {
 	uri, database := os.Getenv("MONGO_URI"), os.Getenv("DATABASE")
 	if uri == "" {
-		uri = "mongodb+srv://sa:Nicolasgarcia03+@cluster0.nllgqfu.mongodb.net/?retryWrites=true&w=majority"
+		/*uri = "mongodb+srv://sa:Nicolasgarcia03+@cluster0.nllgqfu.mongodb.net/proyecto-go?retryWrites=true&w=majority"*/
+		uri = "mongodb://localhost:27017"
 	}
 	if database == "" {
 		database = "proyecto-go"
