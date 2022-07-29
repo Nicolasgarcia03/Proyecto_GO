@@ -21,6 +21,19 @@ func Manejadores() {
 	router.HandleFunc("/modificarregistro", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.ModificarPerfil))).Methods("PUT")
 	router.HandleFunc("/tweet", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.InsertarTweet))).Methods("POST")
 	router.HandleFunc("/leerTweet", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.LeerTweet))).Methods("GET")
+	router.HandleFunc("/borroTweet", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.EliminarTweet))).Methods("DELETE")
+
+	router.HandleFunc("/subirAvatar", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/obtenerAvatar", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.ObtenerAvatar))).Methods("GET")
+	router.HandleFunc("/subirBanner", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.SubirBanner))).Methods("POST")
+	router.HandleFunc("/obtenerBanner", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.SubirBanner))).Methods("GET")
+
+	router.HandleFunc("/altaRelacion", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.AltaRelacion))).Methods("POST")
+	router.HandleFunc("/bajaRelacion", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.BajaRelacion))).Methods("DELETE")
+	router.HandleFunc("/consultaRelacion", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.ConsultarRelacion))).Methods("GET")
+
+	router.HandleFunc("/listaraUsuarios", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.ListarUsuarios))).Methods("GET")
+	router.HandleFunc("/leerTweetsSeguidores", middlew.ChequeoConexion(middlew.ValidacionJWT(routers.LeerTweetsSeguidores))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 
